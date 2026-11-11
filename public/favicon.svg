@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
+  <!-- Architectural Canvas Background -->
+  <rect width="64" height="64" fill="#25251F" rx="4"/>
+  <!-- Thin Hairline Border -->
+  <rect x="2" y="2" width="60" height="60" fill="none" stroke="#3A3A32" stroke-width="1.5" rx="3"/>
+  
+  <!-- Architectural Serif 'V' Geometry -->
+  <path d="M16 18 H26 L32.5 40 L39 18 H48 L36 46 H29 L16 18 Z" fill="#F5F3EE"/>
+  
+  <!-- Architectural Bronze Period -->
+  <rect x="44" y="41" width="5" height="5" fill="#A58B67"/>
+</svg>

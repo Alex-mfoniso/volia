@@ -1,0 +1,8 @@
+# robots.txt for VOLIA NIG LTD
+User-agent: *
+Allow: /
+Disallow: /admin
+Disallow: /api
+Disallow: /application/confirmation
+
+Sitemap: https://volia.ng/sitemap.xml
