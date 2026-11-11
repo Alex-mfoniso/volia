@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { cn } from '@/lib/utils';
-import { ArrowUpRight } from 'lucide-react';
+import { ArrowUpRight, Loader2 } from 'lucide-react';
 
 export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   variant?: 'primary' | 'secondary' | 'accent' | 'outline' | 'ghost' | 'inverted';
@@ -9,6 +9,7 @@ export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElemen
   href?: string;
   isExternal?: boolean;
   withArrow?: boolean;
+  isLoading?: boolean;
   leftIcon?: React.ReactNode;
   rightIcon?: React.ReactNode;
 }
@@ -23,6 +24,7 @@ export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
       href,
       isExternal = false,
       withArrow = false,
+      isLoading = false,
       leftIcon,
       rightIcon,
       disabled,
@@ -56,10 +58,14 @@ export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
 
     const content = (
       <>
-        {leftIcon && <span className="inline-flex shrink-0">{leftIcon}</span>}
+        {isLoading ? (
+          <Loader2 className="w-3.5 h-3.5 animate-spin shrink-0" aria-hidden="true" />
+        ) : (
+          leftIcon && <span className="inline-flex shrink-0">{leftIcon}</span>
+        )}
         <span className="font-medium tracking-architectural">{children}</span>
         {rightIcon && <span className="inline-flex shrink-0">{rightIcon}</span>}
-        {withArrow && (
+        {!isLoading && withArrow && (
           <ArrowUpRight
             className="w-3.5 h-3.5 shrink-0 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
             aria-hidden="true"
@@ -100,7 +106,13 @@ export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
     }
 
     return (
-      <button ref={ref} className={combinedClasses} disabled={disabled} {...props}>
+      <button
+        ref={ref}
+        className={combinedClasses}
+        disabled={disabled || isLoading}
+        aria-busy={isLoading}
+        {...props}
+      >
         {content}
       </button>
     );

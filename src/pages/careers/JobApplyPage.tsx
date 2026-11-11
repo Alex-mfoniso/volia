@@ -736,7 +736,7 @@ export const JobApplyPage: React.FC = () => {
                     disabled={isSubmitting}
                   >
                     <span>{isSubmitting ? 'Transmitting Dossier...' : 'Submit Application'}</span>
-                    <Send className="w-4 h-4 ml-2" />
+                    {!isSubmitting && <Send className="w-4 h-4 ml-2" />}
                   </Button>
                 </div>
               </div>
